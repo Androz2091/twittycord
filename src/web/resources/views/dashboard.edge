@@ -14,12 +14,12 @@
         @if(twitterConnection)
             <a class="btn btn-primary disabled px-4">
                 <i data-feather="twitter" stroke-width="2" width="20" height="20" class="me-2"></i>
-                Twitter: Connected
+                Twitter ({{ twitterConnection }})
             </a>
         @else
-            <a href="/auth/twitter" class="btn btn-primary px-4">
+            <a href="/auth/twitter" class="btn btn-secondary px-4">
                 <i data-feather="twitter" stroke-width="2" width="20" height="20" class="me-2"></i>
-                Twitter
+                Twitter (not connected)
             </a>
         @end
     </div>

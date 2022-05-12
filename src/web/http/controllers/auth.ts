@@ -67,7 +67,7 @@ export default {
                 .then(async ({ client: loggedClient, accessToken, refreshToken, expiresIn }) => {
                     const { data: userObject } = await loggedClient.v2.me();
 
-                    let connection: UserConnectionInterface = { name: 'twitter', accountId: userObject.id }                    
+                    let connection: UserConnectionInterface = { name: 'twitter', accountId: userObject.id, accountDisplayName: userObject.username }                    
                     
                     User.findOneAndUpdate(
                         { userId: (req.user as Profile).id },

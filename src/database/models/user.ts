@@ -6,7 +6,8 @@ const UserSchema: Schema = new Schema<UserInterface>({
     connections: [
         {
             name: { type: String },
-            accountId: { type: String }
+            accountId: { type: String },
+            accountDisplayName: { type: String }
         }
     ]
 });
