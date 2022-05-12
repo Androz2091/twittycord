@@ -1,0 +1,97 @@
+@font-face {
+    font-family: 'Euclid Circular';
+    src: url('/public/assets/fonts/Euclid_Circular_A/Euclid Circular A Regular.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Euclid Circular';
+    src: url('/public/assets/fonts/Euclid_Circular_A/Euclid Circular A Italic.ttf');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Euclid Circular';
+    src: url('/public/assets/fonts/Euclid_Circular_A/Euclid Circular A Medium.ttf');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Euclid Circular';
+    src: url('/public/assets/fonts/Euclid_Circular_A/Euclid Circular A Medium Italic.ttf');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Euclid Circular';
+    src: url('/public/assets/fonts/Euclid_Circular_A/Euclid Circular A SemiBold.ttf');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Euclid Circular';
+    src: url('/public/assets/fonts/Euclid_Circular_A/Euclid Circular A SemiBold Italic.ttf');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Euclid Circular';
+    src: url('/public/assets/fonts/Euclid_Circular_A/Euclid Circular A Bold.ttf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Euclid Circular';
+    src: url('/public/assets/fonts/Euclid_Circular_A/Euclid Circular A Bold Italic.ttf');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Euclid Circular';
+    src: url('/public/assets/fonts/Euclid_Circular_A/Euclid Circular A Light.ttf');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Euclid Circular';
+    src: url('/public/assets/fonts/Euclid_Circular_A/Euclid Circular A Light Italic.ttf');
+    font-weight: 300;
+    font-style: italic;
+}
+
+* {
+    font-family: 'Euclid Circular' !important;
+}
+
+.bg-discord-dark {
+    background-color: #2C2F33;
+    transition: background-color 300ms ease-in-out;
+}
+
+.bg-discord-primary {
+    background-color: #5865F2;
+    transition: background-color 300ms ease-in-out;
+}
+
+.color-discord-dark {
+    color: #2C2F33;
+    transition: color 300ms ease-in-out;
+}
+
+.color-discord-primary {
+    color: #5865F2;
+    transition: color 300ms ease-in-out;
+}
+
+.color-discord-dark.hover:hover {
+    color: #000000;
+}

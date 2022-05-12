@@ -1,0 +1,12 @@
+@layout('layouts/app')
+
+@set('title', 'TwittyCord - Uh Oh!')
+
+@section('body')
+    <div class="container d-flex justify-content-center align-items-center" style="height: 75vh">
+        <div>
+            <p class="display-6 lead text-center">{{ error.code }}</p>
+            <p class="text-small text-muted text-center">{{ error.message }}</p>
+        </div>
+    </div>
+@end

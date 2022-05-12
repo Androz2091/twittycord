@@ -1,0 +1,55 @@
+@layout('layouts/app')
+
+@set('title', 'TwittyCord / Dashboard')
+
+@section('body')
+<div class="px-2 px-lg-5 px-md-3 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-3 py-lg-5">
+        <h1 class="display-6 fw-bold d-flex align-items-center">
+            <i data-feather="share-2" stroke-width="3" width="35" height="35" class="me-1"></i>
+            Connections
+        </h1>
+        <p class="col-md-8 text-small text-muted">Your connected applications with TwittyCord.</p>
+
+        @if(twitterConnection)
+            <a class="btn btn-primary disabled px-4">
+                <i data-feather="twitter" stroke-width="2" width="20" height="20" class="me-2"></i>
+                Twitter: Connected
+            </a>
+        @else
+            <a href="/auth/twitter" class="btn btn-primary px-4">
+                <i data-feather="twitter" stroke-width="2" width="20" height="20" class="me-2"></i>
+                Twitter
+            </a>
+        @end
+    </div>
+</div>
+
+<!-- This one is just for demo -->
+<div class="px-2 px-lg-5 px-md-3 mb-4 bg-light rounded-3">
+    <div class="container-fluid py-3 py-lg-5">
+        <h1 class="display-6 fw-bold d-flex align-items-center">
+            <i data-feather="settings" stroke-width="3" width="35" height="35" class="me-2"></i>
+            Settings
+        </h1>
+        <p class="col-md-8 text-small text-muted">Your TwittyCord account settings.</p>
+        
+        <form class="mt-3">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+@end
