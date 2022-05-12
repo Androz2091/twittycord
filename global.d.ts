@@ -21,5 +21,7 @@ declare namespace NodeJS {
         TWITTER_CLIENT_ID: string,
         TWITTER_CLIENT_SECRET: string,
         TWITTER_CALLBACK_PATH: string,
+
+        MAX_CLUSTERS: string,
     }
 }
