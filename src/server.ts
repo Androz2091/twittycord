@@ -32,7 +32,7 @@ const NAMESPACE = 'Server';
 /** DATABASE CONNECTION */
 mongoose
     .connect(config.mongo.url, config.mongo.options)
-    .then(res => logger.log(NAMESPACE, 'Connected to MongoDB!'))
+    .then(res => logger.log(NAMESPACE, `[PID: ${process.pid}] Connected to MongoDB!`))
     .catch(err => logger.error(NAMESPACE, err.message, err));
 
 /** PASSPORT CONFIG FOR DISCORD AUTH */
@@ -90,4 +90,4 @@ server.get('*', (req, res) => {
     res.render('error', { error: { code: '404', message: 'Uh oh! this is a 404 page, please go home' } })
 })
 
-server.listen(config.server.port, () => logger.log(NAMESPACE, 'Server listening to port: ' + config.server.port));
+server.listen(config.server.port, () => logger.log(NAMESPACE, `[PID: ${process.pid}] Server listening to port: ${config.server.port}`));
