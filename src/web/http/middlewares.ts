@@ -4,11 +4,11 @@ import User from '../../database/models/user';
 
 export default {
     discordAuth: (req: Request, res: Response, next: NextFunction) => {
-        if (!req.isAuthenticated) return res.redirect('/auth/discord');
+        if (!req.isAuthenticated()) return res.redirect('/auth/discord');
         else return next();
     },
     discordGuest: (req: Request, res: Response, next: NextFunction) => {
-        if (!req.isAuthenticated) return res.redirect('/user/dashboard');
+        if (req.isAuthenticated()) return res.redirect('/user/dashboard');
         else return next();
     },
     twitterGuest: async (req: Request, res: Response, next: NextFunction) => {
