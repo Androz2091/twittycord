@@ -6,13 +6,14 @@ import UserInterface from "../../../interfaces/UserInterface";
 import UserConnectionInterface from "../../../interfaces/UserConnectionInterface";
 import logger from "../../../utils/logger";
 import { Profile } from "passport";
+import Strategy from "passport-discord";
 
 const NAMESPACE = 'Auth Controller';
 
 export default {
     discord: {
         authenticated: (req: Request, res: Response) => {
-            let profile = req.user as any;
+            let profile = req.user as Strategy.Profile;
 
             User.findOne({ userId: profile.id })
             .exec()
@@ -22,7 +23,7 @@ export default {
                     req.session.save();
 
                     return res.redirect('/user/dashboard');
-                } else User.create({ userId: profile.id }).then(createdUser => {
+                } else User.create({ userId: profile.id, userEmail: profile?.email }).then(createdUser => {
                     req.session.user = createdUser;
                     req.session.save();
                     

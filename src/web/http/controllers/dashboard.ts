@@ -8,19 +8,20 @@ const NAMESPACE = 'Dashboard Controller';
 
 export default {
     index: (req: Request, res: Response, next: NextFunction) => {
-        let twitterConnection = req.session.user?.connections?.filter(c => c.name == 'twitter')[0]?.accountDisplayName ?? ''
-
-        if (!req.session.user) {
+        let user = req.session.user;
+        
+        if (!user) {
             User.findOne({ userId: (req.user as Profile).id })
                 .exec()
                 .then(resultUser => {
                     req.session.user = resultUser;
                     req.session.save();
-
-                    twitterConnection = resultUser?.connections?.filter(c => c.name == 'twitter')[0]?.accountDisplayName ?? ''
+                    user = resultUser;
                 }).catch(err => logger.error(NAMESPACE, err.message));
         }
-        
-        res.render('dashboard', { twitterConnection });
+            
+        let twitterConnection = user?.connections?.filter(c => c.name == 'twitter')[0]?.accountDisplayName ?? ''
+
+        res.render('dashboard', { twitterConnection, userFromDB: user });
     }
 }
