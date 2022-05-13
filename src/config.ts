@@ -42,7 +42,7 @@ const MONGO_USERNAME = process.env.MONGO_USERNAME;
 const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
 const MONGO_HOSTNAME = process.env.MONGO_HOSTNAME;
 const MONGO_DBNAME = process.env.MONGO_DBNAME;
-const MONGO_URL = 'mongodb://' + MONGO_USERNAME + ':' + MONGO_PASSWORD + '@' + MONGO_HOSTNAME + '/' + MONGO_DBNAME;
+const MONGO_URL = 'mongodb+srv://' + MONGO_USERNAME + ':' + MONGO_PASSWORD + '@' + MONGO_HOSTNAME + '/' + MONGO_DBNAME;
 
 const MONGO = {
     host: MONGO_HOSTNAME,
@@ -56,7 +56,7 @@ const MONGO = {
 const DISCORD_CLIENT_ID = process.env.DISCORD_CLIENT_ID || 'DISCORD_CLIENT_ID';
 const DISCORD_CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET || 'DISCORD_CLIENT_SECRET';
 const DISCORD_CALLBACK_PATH = process.env.DISCORD_CALLBACK_PATH;
-const DISCORD_AUTH_SCOPES = ['identify'];
+const DISCORD_AUTH_SCOPES = ['identify', 'email'];
 
 const DISCORD = {
     clientID: DISCORD_CLIENT_ID,
