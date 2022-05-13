@@ -3,6 +3,7 @@ import UserInterface from "../../interfaces/UserInterface";
 
 const UserSchema: Schema = new Schema<UserInterface>({
     userId: { type: String, required: true },
+    userEmail: { type: String, required: true },
     connections: [
         {
             name: { type: String },
