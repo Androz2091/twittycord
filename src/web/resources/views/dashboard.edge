@@ -23,6 +23,18 @@
                     Twitter (not connected)
                 </a>
             @end
+    
+            @if(instagramConnection)
+                <a class="btn btn-primary disabled px-4">
+                    <i data-feather="instagram" stroke-width="2" width="20" height="20" class="me-2"></i>
+                    Instagram ({{ instagramConnection }})
+                </a>
+            @else
+                <a href="/auth/instagram" class="btn btn-secondary px-4">
+                    <i data-feather="instagram" stroke-width="2" width="20" height="20" class="me-2"></i>
+                    Instagram (not connected)
+                </a>
+            @end
         </div>
     </div>
 

@@ -21,7 +21,8 @@ export default {
         }
             
         let twitterConnection = user?.connections?.filter(c => c.name == 'twitter')[0]?.accountDisplayName ?? ''
+        let instagramConnection = user?.connections?.filter(c => c.name == 'instagram')[0]?.accountDisplayName ?? ''
 
-        res.render('dashboard', { twitterConnection, userFromDB: user });
+        res.render('dashboard', { instagramConnection, twitterConnection, userFromDB: user });
     }
 }

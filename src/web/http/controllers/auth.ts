@@ -2,8 +2,8 @@ import { Request, Response, NextFunction } from "express"
 import config from "../../../config";
 import { TwitterApi } from "twitter-api-v2";
 import User from "../../../database/models/user";
-import UserInterface from "../../../interfaces/UserInterface";
 import UserConnectionInterface from "../../../interfaces/UserConnectionInterface";
+import InstagramUserProfileInterface from "../../../interfaces/InstagramUserProfileInterface";
 import logger from "../../../utils/logger";
 import { Profile } from "passport";
 import Strategy from "passport-discord";
@@ -87,6 +87,35 @@ export default {
                     })
                     .catch(err => logger.error(NAMESPACE, err.message, err));
                 });
+        }
+    },
+    instagram: {
+        authenticated: (req: Request, res: Response) => {
+            console.log(req.session.instagramUserProfile);
+            
+            let profile = req.session.instagramUserProfile;
+
+            if (!profile) {
+                req.flash('error', 'Please try connecting again.');
+                return res.redirect('/user/dashboard');
+            }
+
+            let connection: UserConnectionInterface = Object.assign({ name: 'instagram' }, profile);
+            
+            User.findOneAndUpdate(
+                { userId: (req.user as Profile).id },
+                { $push: { connections: connection } },
+                { returnDocument: 'after' }
+            )
+            .exec()
+            .then(result => {
+                req.session.user = result;
+                req.session.save();
+
+                req.flash('success', 'Instagram connection successful!');
+                res.redirect('/user/dashboard');
+            })
+            .catch(err => logger.error(NAMESPACE, err.message, err));
         }
     }
 }

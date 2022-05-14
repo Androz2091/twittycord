@@ -82,4 +82,18 @@ const TWITTER = {
     scopes: TWITTER_AUTH_SCOPES
 }
 
-export default { app: APP, server: SERVER, mongo: MONGO, discord: DISCORD, twitter: TWITTER }
+/* INSTAGRAM CLIENT CONFIG */
+const INSTAGRAM_APP_ID = process.env.INSTAGRAM_APP_ID || 'INSTAGRAM_APP_ID';
+const INSTAGRAM_APP_SECRET = process.env.INSTAGRAM_APP_SECRET || 'INSTAGRAM_APP_SECRET';
+const INSTAGRAM_CALLBACK_PATH = process.env.INSTAGRAM_CALLBACK_PATH;
+const INSTAGRAM_REDIRECT_URI = SERVER_URL + INSTAGRAM_CALLBACK_PATH;
+const INSTAGRAM_AUTH_SCOPES = ['user_profile', 'user_media'];
+
+const INSTAGRAM = {
+    appId: INSTAGRAM_APP_ID,
+    appSecret: INSTAGRAM_APP_SECRET,
+    redirectURI: INSTAGRAM_REDIRECT_URI,
+    scopes: INSTAGRAM_AUTH_SCOPES
+}
+
+export default { app: APP, server: SERVER, mongo: MONGO, discord: DISCORD, twitter: TWITTER, instagram: INSTAGRAM }
