@@ -56,12 +56,12 @@ export default {
 
             if (!codeVerifier || !state || !sessionState || !code) {
                 req.flash('error', 'You denied the app or your session expired!');
-                return res.redirect('user/dashboard');
+                return res.redirect('/user/dashboard');
             }
 
             if (state !== sessionState) {
                 req.flash('error', 'Stored, tokens didn\'t match please try again');
-                return res.redirect('user/dashboard');
+                return res.redirect('/user/dashboard');
             }
 
             let client = new TwitterApi({ clientId: config.twitter.clientId, clientSecret: config.twitter.clientSecret });
