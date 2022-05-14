@@ -17,7 +17,7 @@ const APP = {
 const SERVER_PORT = process.env.SERVER_PORT;
 const SERVER_HOSTNAME = process.env.SERVER_HOSTNAME;
 const SERVER_SCHEME = process.env.SERVER_SCHEME;
-const SERVER_URL = SERVER_SCHEME + '://' + SERVER_HOSTNAME + ':' + SERVER_PORT;
+const SERVER_URL = SERVER_SCHEME + '://' + SERVER_HOSTNAME + (APP.env === 'local' ? ':' + SERVER_PORT : '');
 const SESSION_SECRET = 'JUST_A_RANDOM_STRING';
 
 const SERVER = {
