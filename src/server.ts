@@ -6,6 +6,7 @@ import { Strategy } from 'passport-discord';
 import OAuth2Strategy from 'passport-oauth2';
 import mongoose from 'mongoose';
 import fs from 'fs';
+import flash from 'connect-flash';
 
 import config from './config';
 import logger from './utils/logger';
@@ -73,6 +74,18 @@ server.use(passport.session());
 
 server.use((req, res, next) => {
     edge.GLOBALS.user = Object.assign({ isAuthenticated: req.isAuthenticated() }, (req.user || {}))
+
+    return next();
+});
+
+server.use(flash())
+server.use((req, res, next) => {
+    let error = req.flash('error').map(message => ({ type: 'danger', message }));
+    let warn = req.flash('warn').map(message => ({ type: 'warning', message }));
+    let success = req.flash('success').map(message => ({ type: 'success', message }));
+    let notifications = error.concat(warn, success);
+
+    edge.GLOBALS.notifications = notifications;
 
     return next();
 });

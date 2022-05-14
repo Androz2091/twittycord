@@ -21,7 +21,7 @@ export default {
                 if (resultUser) {
                     req.session.user = resultUser;
                     req.session.save();
-
+                    
                     return res.redirect('/user/dashboard');
                 } else User.create({ userId: profile.id, userEmail: profile?.email }).then(createdUser => {
                     req.session.user = createdUser;
@@ -55,11 +55,13 @@ export default {
             let { codeVerifier, state: sessionState } = req.session;
 
             if (!codeVerifier || !state || !sessionState || !code) {
-                return res.status(400).send('You denied the app or your session expired!');
+                req.flash('error', 'You denied the app or your session expired!');
+                return res.redirect('user/dashboard');
             }
 
             if (state !== sessionState) {
-                return res.status(400).send('Stored tokens didnt match!');
+                req.flash('error', 'Stored, tokens didn\'t match please try again');
+                return res.redirect('user/dashboard');
             }
 
             let client = new TwitterApi({ clientId: config.twitter.clientId, clientSecret: config.twitter.clientSecret });
@@ -80,6 +82,7 @@ export default {
                         req.session.user = result;
                         req.session.save();
 
+                        req.flash('success', 'Twitter connection successful!');
                         res.redirect('/user/dashboard');
                     })
                     .catch(err => logger.error(NAMESPACE, err.message, err));
