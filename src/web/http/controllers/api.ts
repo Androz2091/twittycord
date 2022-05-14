@@ -1,11 +1,14 @@
 import { Request, Response, NextFunction } from "express"
 import User from "../../../database/models/user"
 import logger from "../../../utils/logger"
+import config from "../../../config"
 
 const NAMESPACE = 'Api Controller';
 
 export default {
     getAllUsers: (req: Request, res: Response, next: NextFunction) => {
+        const key = req.query.key;
+        if (key !== config.api.key) return res.status(401).send('Unauthorized');
         User.find()
             .exec()
             .then(users => {
@@ -16,6 +19,9 @@ export default {
             });
     },
     getUser: (req: Request, res: Response, next: NextFunction) => {
+        const key = req.query.key;
+        if (key !== config.api.key) return res.status(401).send('Unauthorized');
+
         let { discordId } = req.query;
 
         User.findOne({ userId: discordId })
