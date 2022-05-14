@@ -13,7 +13,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/webidl-conversions": "^6.1.1",
     "body-parser": "^1.20.0",
     "connect-flash": "^0.1.1",
     "dotenv": "^16.0.0",
@@ -23,7 +22,6 @@
     "mongoose": "^6.3.2",
     "passport": "^0.5.2",
     "passport-discord": "^0.1.4",
-    "ts-node": "^10.7.0",
     "twitter-api-v2": "^1.12.0"
   },
   "devDependencies": {
@@ -34,6 +32,8 @@
     "@types/node": "^17.0.32",
     "@types/passport": "^1.0.7",
     "@types/passport-discord": "^0.1.5",
-    "cpy-cli": "^4.1.0"
+    "@types/webidl-conversions": "^6.1.1",
+    "cpy-cli": "^4.1.0",
+    "ts-node": "^10.7.0"
   }
 }
