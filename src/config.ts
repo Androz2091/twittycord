@@ -96,4 +96,9 @@ const INSTAGRAM = {
     scopes: INSTAGRAM_AUTH_SCOPES
 }
 
-export default { app: APP, server: SERVER, mongo: MONGO, discord: DISCORD, twitter: TWITTER, instagram: INSTAGRAM }
+/* API CONFIG */
+const API = {
+    key: process.env.API_PROTECTED_KEY
+}
+
+export default { app: APP, server: SERVER, mongo: MONGO, discord: DISCORD, twitter: TWITTER, instagram: INSTAGRA, api: API }

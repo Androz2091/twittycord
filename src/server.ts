@@ -97,6 +97,7 @@ server.use(bodyParser.json());
 server.use('/public/assets', express.static(join(__dirname, 'web/resources/assets')))
 
 server.use('/', routes.home);
+server.use('/privacy', routes.privacy);
 server.use('/auth', routes.auth);
 server.use('/api', routes.api);
 server.use('/user/dashboard', routes.dashboard);
