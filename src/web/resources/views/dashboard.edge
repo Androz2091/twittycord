@@ -23,6 +23,28 @@
                     Twitter (not connected)
                 </a>
             @end
+    
+            @if(instagramConnection)
+                <a class="btn btn-primary disabled px-4">
+                    <i data-feather="instagram" stroke-width="2" width="20" height="20" class="me-2"></i>
+                    Instagram ({{ instagramConnection }})
+                </a>
+            @else
+                <a href="/auth/instagram" class="btn btn-secondary px-4">
+                    <i data-feather="instagram" stroke-width="2" width="20" height="20" class="me-2"></i>
+                    Instagram (not connected)
+                </a>
+            @end
+            
+            @if(metamaskConnection)
+                <a class="btn btn-primary disabled px-4">
+                    MetaMask ({{ metamaskConnection }})
+                </a>
+            @else
+                <button id="metamaskConnectionButton" class="btn btn-secondary px-4">
+                    MetaMask (not connected)
+                </button>
+            @end
         </div>
     </div>
 
@@ -45,4 +67,10 @@
         </div>
     </div>
 </div>
+@end
+
+@section('scripts')
+    @super
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="/public/assets/js/metamaskConnection.js"></script>
 @end

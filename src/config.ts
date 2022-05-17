@@ -42,7 +42,7 @@ const MONGO_USERNAME = process.env.MONGO_USERNAME;
 const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
 const MONGO_HOSTNAME = process.env.MONGO_HOSTNAME;
 const MONGO_DBNAME = process.env.MONGO_DBNAME;
-const MONGO_URL = 'mongodb://' + MONGO_USERNAME + ':' + MONGO_PASSWORD + '@' + MONGO_HOSTNAME + '/' + MONGO_DBNAME;
+const MONGO_URL = (APP.env === 'local' ? 'mongodb+srv://' : 'mongodb://') + MONGO_USERNAME + ':' + MONGO_PASSWORD + '@' + MONGO_HOSTNAME + '/' + MONGO_DBNAME;
 
 const MONGO = {
     host: MONGO_HOSTNAME,
@@ -82,9 +82,23 @@ const TWITTER = {
     scopes: TWITTER_AUTH_SCOPES
 }
 
+/* INSTAGRAM CLIENT CONFIG */
+const INSTAGRAM_APP_ID = process.env.INSTAGRAM_APP_ID || 'INSTAGRAM_APP_ID';
+const INSTAGRAM_APP_SECRET = process.env.INSTAGRAM_APP_SECRET || 'INSTAGRAM_APP_SECRET';
+const INSTAGRAM_CALLBACK_PATH = process.env.INSTAGRAM_CALLBACK_PATH;
+const INSTAGRAM_REDIRECT_URI = SERVER_URL + INSTAGRAM_CALLBACK_PATH;
+const INSTAGRAM_AUTH_SCOPES = ['user_profile', 'user_media'];
+
+const INSTAGRAM = {
+    appId: INSTAGRAM_APP_ID,
+    appSecret: INSTAGRAM_APP_SECRET,
+    redirectURI: INSTAGRAM_REDIRECT_URI,
+    scopes: INSTAGRAM_AUTH_SCOPES
+}
+
 /* API CONFIG */
 const API = {
     key: process.env.API_PROTECTED_KEY
 }
 
-export default { app: APP, server: SERVER, mongo: MONGO, discord: DISCORD, twitter: TWITTER, api: API }
+export default { app: APP, server: SERVER, mongo: MONGO, discord: DISCORD, twitter: TWITTER, instagram: INSTAGRA, api: API }

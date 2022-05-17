@@ -18,5 +18,21 @@ export default {
             if (result?.connections?.filter(c => c.name == 'twitter')[0] ?? false) return res.redirect('/user/dashboard');
             else return next();
         });
+    },
+    instagramGuest: async (req: Request, res: Response, next: NextFunction) => {
+        User.findOne({ userId: (req.user as Profile).id })
+        .exec()
+        .then(result => {
+            if (result?.connections?.filter(c => c.name == 'instagram')[0] ?? false) return res.redirect('/user/dashboard');
+            else return next();
+        });
+    },
+    metamaskGuest: async (req: Request, res: Response, next: NextFunction) => {
+        User.findOne({ userId: (req.user as Profile).id })
+        .exec()
+        .then(result => {
+            if (result?.connections?.filter(c => c.name == 'metamask')[0] ?? false) return res.redirect('/user/dashboard');
+            else return next();
+        });
     }
 }

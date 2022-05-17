@@ -19,9 +19,11 @@ export default {
                     user = resultUser;
                 }).catch(err => logger.error(NAMESPACE, err.message));
         }
-            
+        
         let twitterConnection = user?.connections?.filter(c => c.name == 'twitter')[0]?.accountDisplayName ?? ''
+        let instagramConnection = user?.connections?.filter(c => c.name == 'instagram')[0]?.accountDisplayName ?? ''
+        let metamaskConnection = user?.connections?.filter(c => c.name == 'metamask')[0]?.accountDisplayName ?? ''
 
-        res.render('dashboard', { twitterConnection, userFromDB: user });
+        res.render('dashboard', { metamaskConnection, instagramConnection, twitterConnection, userFromDB: user });
     }
 }

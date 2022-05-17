@@ -19,12 +19,14 @@ edge.mount(join(__dirname, 'web/resources/views'));
 import * as routes from './web/http/routes/index';
 
 import expressSession from 'express-session';
+import InstagramUserProfileInterface from './interfaces/InstagramUserProfileInterface';
 declare module 'express-session' {
     interface SessionData {
       codeVerifier?: string;
       state?: string;
       discordProfile?: Strategy.Profile,
-      user: UserInterface & { _id: any } | null
+      user: UserInterface & { _id: any } | null,
+      instagramUserProfile: InstagramUserProfileInterface
     }
 }
 
