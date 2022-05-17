@@ -35,6 +35,16 @@
                     Instagram (not connected)
                 </a>
             @end
+            
+            @if(metamaskConnection)
+                <a class="btn btn-primary disabled px-4">
+                    MetaMask ({{ metamaskConnection }})
+                </a>
+            @else
+                <button id="metamaskConnectionButton" class="btn btn-secondary px-4">
+                    MetaMask (not connected)
+                </button>
+            @end
         </div>
     </div>
 
@@ -57,4 +67,10 @@
         </div>
     </div>
 </div>
+@end
+
+@section('scripts')
+    @super
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="/public/assets/js/metamaskConnection.js"></script>
 @end

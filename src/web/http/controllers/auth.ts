@@ -7,6 +7,7 @@ import InstagramUserProfileInterface from "../../../interfaces/InstagramUserProf
 import logger from "../../../utils/logger";
 import { Profile } from "passport";
 import Strategy from "passport-discord";
+import { fromRpcSig, hashPersonalMessage, ecrecover, pubToAddress, addHexPrefix } from 'ethereumjs-util';
 
 const NAMESPACE = 'Auth Controller';
 
@@ -91,8 +92,6 @@ export default {
     },
     instagram: {
         authenticated: (req: Request, res: Response) => {
-            console.log(req.session.instagramUserProfile);
-            
             let profile = req.session.instagramUserProfile;
 
             if (!profile) {
@@ -116,6 +115,40 @@ export default {
                 res.redirect('/user/dashboard');
             })
             .catch(err => logger.error(NAMESPACE, err.message, err));
+        }
+    },
+    metamask: {
+        authenticate: (req: Request, res: Response, next: NextFunction) => {
+            let { address, signature, message } = req.body;
+
+            let sig = fromRpcSig(signature);
+            let msg = hashPersonalMessage(Buffer.from(message));
+            let publicKey = ecrecover(msg, sig.v, sig.r, sig.s);
+            let pubAddress = pubToAddress(publicKey);
+            let signedAddress = addHexPrefix(pubAddress.toString('hex'))
+        
+            address = address.toLocaleLowerCase()
+            let shortname = address.substring(0, 5) + '...' + address.slice(-4);
+
+            if (signedAddress.toLocaleLowerCase() === address) {
+                let connection: UserConnectionInterface = { name: 'metamask', accountId: address, accountDisplayName: shortname };
+                    
+                User.findOneAndUpdate(
+                    { userId: (req.user as Profile).id },
+                    { $push: { connections: connection } },
+                    { returnDocument: 'after' }
+                )
+                .exec()
+                .then(result => {
+                    req.session.user = result;
+                    req.session.save();
+
+                    res.json({ success: true, message: 'Successfully linked your metamask account.' });
+                })
+                .catch(err => logger.error(NAMESPACE, err.message, err));
+            } else {
+                res.json({ success: false, message: 'Couldn\'t verify address belongs to you, please try again with your own.' });
+            }
         }
     }
 }

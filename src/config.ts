@@ -42,7 +42,7 @@ const MONGO_USERNAME = process.env.MONGO_USERNAME;
 const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
 const MONGO_HOSTNAME = process.env.MONGO_HOSTNAME;
 const MONGO_DBNAME = process.env.MONGO_DBNAME;
-const MONGO_URL = 'mongodb://' + MONGO_USERNAME + ':' + MONGO_PASSWORD + '@' + MONGO_HOSTNAME + '/' + MONGO_DBNAME;
+const MONGO_URL = (APP.env === 'local' ? 'mongodb+srv://' : 'mongodb://') + MONGO_USERNAME + ':' + MONGO_PASSWORD + '@' + MONGO_HOSTNAME + '/' + MONGO_DBNAME;
 
 const MONGO = {
     host: MONGO_HOSTNAME,

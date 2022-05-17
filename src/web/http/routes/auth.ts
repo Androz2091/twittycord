@@ -17,7 +17,6 @@ router.get('/twitter', middlewares.discordAuth, middlewares.twitterGuest, contro
 router.get('/twitter/callback', middlewares.discordAuth, middlewares.twitterGuest, controller.twitter.callback);
 
 router.get('/instagram', middlewares.discordAuth, middlewares.instagramGuest, instagram.authenticate());
-
 router.get(
     '/instagram/callback',
     middlewares.discordAuth,
@@ -25,5 +24,7 @@ router.get(
     instagram.authenticate({ failureRedirect: '/user/dashboard' }),
     controller.instagram.authenticated
 );
+
+router.post('/metamask/authenticate', middlewares.discordAuth, middlewares.metamaskGuest, controller.metamask.authenticate);
 
 export default router;
