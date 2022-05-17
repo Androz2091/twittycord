@@ -17,6 +17,7 @@
     "connect-flash": "^0.1.1",
     "dotenv": "^16.0.0",
     "edge.js": "^5.3.5",
+    "ethereumjs-util": "^7.1.4",
     "express": "^4.18.1",
     "express-session": "^1.17.2",
     "mongoose": "^6.3.2",

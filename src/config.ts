@@ -101,4 +101,4 @@ const API = {
     key: process.env.API_PROTECTED_KEY
 }
 
-export default { app: APP, server: SERVER, mongo: MONGO, discord: DISCORD, twitter: TWITTER, instagram: INSTAGRA, api: API }
+export default { app: APP, server: SERVER, mongo: MONGO, discord: DISCORD, twitter: TWITTER, instagram: INSTAGRAM, api: API }
