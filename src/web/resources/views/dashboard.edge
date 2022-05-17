@@ -12,39 +12,41 @@
             </h1>
             <p class="col-md-8 text-small text-muted">Your connected applications with TwittyCord.</p>
     
-            @if(twitterConnection)
-                <a class="btn btn-primary disabled px-4">
-                    <i data-feather="twitter" stroke-width="2" width="20" height="20" class="me-2"></i>
-                    Twitter ({{ twitterConnection }})
-                </a>
-            @else
-                <a href="/auth/twitter" class="btn btn-secondary px-4">
-                    <i data-feather="twitter" stroke-width="2" width="20" height="20" class="me-2"></i>
-                    Twitter (not connected)
-                </a>
-            @end
-    
-            @if(instagramConnection)
-                <a class="btn btn-primary disabled px-4">
-                    <i data-feather="instagram" stroke-width="2" width="20" height="20" class="me-2"></i>
-                    Instagram ({{ instagramConnection }})
-                </a>
-            @else
-                <a href="/auth/instagram" class="btn btn-secondary px-4">
-                    <i data-feather="instagram" stroke-width="2" width="20" height="20" class="me-2"></i>
-                    Instagram (not connected)
-                </a>
-            @end
-            
-            @if(metamaskConnection)
-                <a class="btn btn-primary disabled px-4">
-                    MetaMask ({{ metamaskConnection }})
-                </a>
-            @else
-                <button id="metamaskConnectionButton" class="btn btn-secondary px-4">
-                    MetaMask (not connected)
-                </button>
-            @end
+            <div class="d-flex flex-column" style="width: fit-content;">
+                @if(twitterConnection)
+                    <a class="btn btn-primary disabled px-4" style="margin-bottom: 0.5rem; margin-top: 0.5rem">
+                        <i data-feather="twitter" stroke-width="2" width="20" height="20" class="me-2"></i>
+                        Twitter ({{ twitterConnection }})
+                    </a>
+                @else
+                    <a href="/auth/twitter" class="btn btn-secondary px-4">
+                        <i data-feather="twitter" stroke-width="2" width="20" height="20" class="me-2"></i>
+                        Twitter (not connected)
+                    </a>
+                @end
+        
+                @if(instagramConnection)
+                    <a class="btn btn-primary disabled px-4" style="margin-bottom: 0.5rem; margin-top: 0.5rem">
+                        <i data-feather="instagram" stroke-width="2" width="20" height="20" class="me-2"></i>
+                        Instagram ({{ instagramConnection }})
+                    </a>
+                @else
+                    <a href="/auth/instagram" class="btn btn-secondary px-4">
+                        <i data-feather="instagram" stroke-width="2" width="20" height="20" class="me-2"></i>
+                        Instagram (not connected)
+                    </a>
+                @end
+                
+                @if(metamaskConnection)
+                    <a class="btn btn-primary disabled px-4" style="margin-bottom: 0.5rem; margin-top: 0.5rem">
+                        MetaMask ({{ metamaskConnection }})
+                    </a>
+                @else
+                    <button id="metamaskConnectionButton" class="btn btn-secondary px-4">
+                        MetaMask (not connected)
+                    </button>
+                @end
+            </div>
         </div>
     </div>
 
