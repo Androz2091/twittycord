@@ -25,5 +25,17 @@ export default {
         let metamaskConnection = user?.connections?.filter(c => c.name == 'metamask')[0]?.accountDisplayName ?? ''
 
         res.render('dashboard', { metamaskConnection, instagramConnection, twitterConnection, userFromDB: user });
+    },
+    delete: (req: Request, res: Response, next: NextFunction) => {
+        User.deleteOne({ userId: (req.user as Profile).id })
+            .exec()
+            .then(result => {
+                req.session.destroy(() => {
+                    res.redirect('/user/dashboard');
+                });
+            }).catch(err => {
+                res.sendStatus(401);
+                logger.error(NAMESPACE, err.message, err);
+            });
     }
 }

@@ -25,7 +25,6 @@
                     </a>
                 @end
         
-                {{--
                 @if(instagramConnection)
                     <a class="btn btn-primary disabled px-4 spaced-button">
                         <i data-feather="instagram" stroke-width="2" width="20" height="20" class="me-2"></i>
@@ -37,7 +36,6 @@
                         Instagram (not connected)
                     </a>
                 @end 
-                --}}
                 
                 @if(metamaskConnection)
                     <a class="btn btn-primary disabled px-4 spaced-button">
@@ -60,13 +58,14 @@
             </h1>
             <p class="col-md-8 text-small text-muted">Your TwittyCord account settings.</p>
             
-            <form class="mt-3">
+            <form class="mt-3" action="/user/dashboard/delete" method="POST">
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
                     <input type="email" class="form-control" id="email" value="{{ userFromDB.userEmail }}" disabled aria-describedby="emailInfo">
                     <div id="emailInfo" class="form-text">Email has been verified using your discord account.</div>
                 </div>
-                <button type="submit" class="btn btn-primary" disabled>Submit</button>
+                <button type="submit" class="btn btn-primary" disabled>Update Email</button>
+                <button type="submit" class="btn btn-danger">Delete my data</button>
             </form>
         </div>
     </div>
